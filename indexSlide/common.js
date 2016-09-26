@@ -1,6 +1,6 @@
 requirejs.config({
     paths: {
-        jquery: 'http://s10.qhimg.com/lib/jquery/1102',
+        jquery: 'http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js',
         lazyload: './jquery.lazyload',
         indexSlide:'./indexSlide'
     },
