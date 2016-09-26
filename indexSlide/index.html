@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>轮播图组件</title>
+<style type="text/css">
+*{
+	margin: 0;
+	padding: 0;
+}
+/*banner*/
+.mod-banner .banner-slide,
+.mod-banner .banner-slide .slideBox,
+.mod-banner .banner-slide .slider-film{
+	height: 448px;
+}
+.mod-banner .banner-slide{
+	position: relative;
+}
+.mod-banner .banner-slide .slider-film{
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	background:center no-repeat;
+}
+.mod-banner .banner-slide .slide-prev,
+.mod-banner .banner-slide .slide-next{
+	display: none;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-top: -36px;
+	width: 42px;
+	height: 72px;
+	background: transparent url(icons.png) no-repeat -179px -143px;
+	/*filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#0a000000',endColorstr='#0a000000');*/
+	border-radius: 2px;
+}
+.mod-banner .banner-slide .slide-prev:hover,
+.mod-banner .banner-slide .slide-next:hover{
+	background-color: rgba(0,0,0,.4);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#28000000',endColorstr='#28000000');
+}
+.mod-banner .banner-slide .slide-prev{
+	margin-left: -400px;
+}
+.mod-banner .banner-slide .slide-next{
+	margin-left: 568px;
+	background-position: -177px -74px; 
+}
+
+.mod-banner .banner-slide .slide-point{
+	display: none;
+	position: absolute;
+	left:calc(50% - 120px);
+	/*bottom: 15px;*/
+	height: 14px;
+	padding: 7px 14px;
+	text-align: center;
+	border-radius: 14px;
+}
+.mod-banner .banner-slide .slide-point a{
+	display: inline-block;
+	width: 12px;
+	height: 12px;
+	border-radius: 10px;
+	margin: 1px 0 1px 15px;
+	vertical-align: top;
+	background: rgba(0,0,0,.3)!important;
+	background: #000;
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#1e000000',endColorstr='#1e000000');
+}
+.mod-banner .banner-slide .slide-point .curr-point{
+	box-shadow: 0 0 1px #000; 
+	width: 12px;
+	height: 12px;
+	margin-top: 0;
+	background: rgba(255,255,255,.9)!important;
+	background: #fff;
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#5affffff',endColorstr='#5affffff');
+}
+.mod-banner .banner-slide .slide-point a:first-child{
+	margin-left: 0;
+}
+/*banner*/	
+</style>
+<script type="text/javascript" src="require.js"></script>
+<script type="text/javascript" src="common.js"></script>
+</head>
+<body>
+<div class="mod-banner">
+	<div class="banner-slide">
+		<div class="slideBox">
+			<a class="slider-film " style="display: none; background-image: url(&quot;http://p0.qhimg.com/t018d4794de8b16e1cd.jpg&quot;); background-position: center center; background-repeat: repeat;" href="#" target="_blank">
+			</a>
+			<a class="slider-film js-lazyload" style="background-position: center center; background-repeat: repeat; display: none; background-image: url(&quot;http://p9.qhimg.com/t01c2e1811fe59cec68.jpg&quot;);" href="#" target="_blank">
+			</a>
+			<a class="slider-film js-lazyload" style="background-position: center center; background-repeat: repeat; display: none; background-image: url(&quot;http://p5.qhimg.com/t014bc6715a29d91081.jpg&quot;);" href="#" target="_blank">
+			</a>
+			<a class="slider-film js-lazyload" style="background-position: center center; background-repeat: repeat; display: inline; background-image: url(&quot;http://p7.qhimg.com/t0175de0c67d1fc5e8c.jpg&quot;);" href="#" target="_blank">
+			</a>
+			<a class="slider-film js-lazyload" style="background-position: center center; background-repeat: repeat; display: inline; background-image: url(&quot;http://p9.qhimg.com/t01c2e1811fe59cec68.jpg&quot;);" href="#" target="_blank">
+			</a>
+			<a class="slider-film js-lazyload" style="background-position: center center; background-repeat: repeat; display: none; background-image: url(&quot;http://p5.qhimg.com/t014bc6715a29d91081.jpg&quot;);" href="#" target="_blank">
+			</a>
+		</div>
+		<a href="#" onclick="return false" class="slide-prev"  style="display: inline;"></a>
+		<a href="#" onclick="return false" class="slide-next"  style="display: inline;"></a>
+		<div class="slide-point" style="display: block; margin-left: 35px;">
+			<a href="javascript:;" onclick="return false;" class=""></a>
+			<a href="javascript:;" onclick="return false;" class=""></a>
+			<a href="javascript:;" onclick="return false;" class=""></a>
+			<a href="javascript:;" onclick="return false;" class=""></a>
+			<a href="javascript:;" onclick="return false;" class="curr-point"></a>
+			<a href="javascript:;" onclick="return false;" class=""></a>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+requirejs(['jquery','lazyload'], function($){
+	// 普通栏目延时加载        
+	$('.js-lazyload').lazyload({
+	    threshold : 50
+	});
+
+	// banner切换
+	require(['indexSlide'],function(indexSlide){
+		indexSlide({
+			ele:'.banner-slide',
+		});
+	});
+})
+</script>
+</body>
+</html>
